@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanghai City Walk | Immersive Vision Pro Experience</title>
+    <style>
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #10B981;
+            --dark-color: #1F2937;
+            --light-color: #F9FAFB;
+            --accent-color: #6366F1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            margin-bottom: 1rem;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .showcase-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .showcase-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .download-guide {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 2rem;
+        }
+        
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .language-toggle {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .language-button {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/api/placeholder/240/240" alt="Shanghai City Walk Logo" class="logo">
+        <h1>Shanghai City Walk</h1>
+        <p>Experience Shanghai like never before with Apple Vision Pro</p>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">上海漫步 | Shanghai City Walk</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#experience">Experience</a>
+                <a href="#guide">User Guide</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="language-toggle">
+            <button class="language-button active" onclick="switchLanguage('en')">English</button>
+            <button class="language-button" onclick="switchLanguage('zh')">中文</button>
+        </div>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Immerse Yourself in Shanghai</h2>
+                <p>Shanghai City Walk is a groundbreaking immersive app for Apple Vision Pro that transports you to the vibrant streets of Shanghai. Experience the sights and sounds of one of the world's most exciting cities from the comfort of your home.</p>
+                <p>Our cutting-edge 3D video technology delivers an unparalleled sense of presence, making you feel like you're actually walking through Shanghai's iconic locations.</p>
+                <a href="#download" class="cta-button">Download on the App Store</a>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/600/400" alt="Shanghai City Walk Experience">
+            </div>
+        </div>
+        
+        <section id="features">
+            <h2>Key Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🌆</div>
+                    <h3>High-Quality Immersive Video</h3>
+                    <p>Experience Shanghai in breathtaking detail with our professionally captured 3D video content, optimized for Apple Vision Pro.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>Spatial Audio</h3>
+                    <p>Hear the sounds of the city all around you with our carefully engineered spatial audio that reacts to your head movements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>360° Freedom</h3>
+                    <p>Look around freely in any direction to explore Shanghai's urban landscape just as if you were there in person.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Multiple Locations</h3>
+                    <p>Visit famous landmarks, bustling markets, tranquil gardens, and authentic neighborhoods throughout the city.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Intuitive Interface</h3>
+                    <p>Our sleek, user-friendly design makes it easy to navigate between different experiences and control your virtual tour.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Bilingual Support</h3>
+                    <p>Enjoy the app in both English and Chinese, with seamless language switching that respects your device settings.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>The Immersive Experience</h2>
+            <p>Our app uses the revolutionary capabilities of Apple Vision Pro to deliver a truly transformative experience of Shanghai:</p>
+            
+            <div class="showcase">
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="The Bund Experience">
+                    <h3>The Bund</h3>
+                    <p>Stroll along Shanghai's famous waterfront promenade, taking in the colonial architecture and Pudong skyline.</p>
+                </div>
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="Yuyuan Garden Experience">
+                    <h3>Yuyuan Garden</h3>
+                    <p>Find tranquility in this classical Chinese garden dating back to the Ming Dynasty.</p>
+                </div>
+                <div class="showcase-item">
+                    <img src="/api/placeholder/400/300" alt="Nanjing Road Experience">
+                    <h3>Nanjing Road</h3>
+                    <p>Experience the energy of one of the world's busiest shopping streets with its vibrant lights and sounds.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="guide">
+            <h2>User Guide</h2>
+            <p>Getting started with Shanghai City Walk is simple, but there are a few things to know about the download process:</p>
+            
+            <div class="download-guide">
+                <h3>High-Quality Experience Download</h3>
+                <p>To ensure the highest quality immersive experience, our app uses Apple's On-Demand Resources to download high-resolution video content when needed.</p>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Initial Download</h4>
+                        <p>The initial app download from the App Store is small (under 100MB) and installs quickly.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Experience Download</h4>
+                        <p>When you select an immersive experience for the first time, you'll be prompted to download the high-quality 3D video content (approximately 7GB).</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>WiFi Recommended</h4>
+                        <p>We recommend downloading over WiFi connection for faster download and to avoid using cellular data.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Progress Tracking</h4>
+                        <p>You'll see a progress indicator during download. You can cancel and resume later if needed.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Enjoy!</h4>
+                        <p>Once downloaded, the immersive experience will launch automatically and be available instantly for future viewing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Why is the video download so large?</div>
+                <div class="faq-answer">To deliver the most immersive and high-quality experience possible on Apple Vision Pro, we use 3D stereoscopic video at 8K resolution. This ensures incredible visual fidelity but requires significant data. We've optimized the videos as much as possible without compromising quality.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will the downloaded content take up permanent space on my device?</div>
+                <div class="faq-answer">The app uses Apple's On-Demand Resources system, which means the system can automatically remove the downloaded content if you're low on storage and haven't used the app recently. When you open the app again, it will re-download as needed.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I use the app offline after downloading?</div>
+                <div class="faq-answer">Yes! Once you've downloaded the video content, you can enjoy the immersive experience without an internet connection, making it perfect for travel or situations with limited connectivity.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I switch between different locations in Shanghai?</div>
+                <div class="faq-answer">From the main menu, you can browse different experiences using the carousel interface. Simply swipe or tap to navigate between locations and tap to select the one you want to experience.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Does the app support both English and Chinese?</div>
+                <div class="faq-answer">Yes, Shanghai City Walk fully supports both English and Chinese languages. The app will automatically use your device's language setting, or you can manually switch languages in the app settings.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will you add more locations in future updates?</div>
+                <div class="faq-answer">Absolutely! We're already filming additional locations throughout Shanghai and plan to release regular updates with new immersive experiences at no additional cost.</div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Shanghai City Walk. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p>Made with ❤️ for Apple Vision Pro</p>
+        </div>
+    </footer>
+    
+    <script>
+        function switchLanguage(lang) {
+            // In a real implementation, this would switch the content language
+            const buttons = document.querySelectorAll('.language-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            const activeButton = document.querySelector(`.language-button[onclick="switchLanguage('${lang}')"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // This would actually change the content language
+            console.log(`Switching to ${lang}`);
+        }
+    </script>
+</body>
+</html>
