@@ -21,33 +21,33 @@ function switchLanguage(lang) {
 // Function to load content from separate HTML files
 document.addEventListener('DOMContentLoaded', function() {
     // Load features content
-    fetch('components/features.html')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('#features .features').innerHTML = data;
-        });
+    // fetch('components/features.html')
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.querySelector('#features .features').innerHTML = data;
+    //     });
     
-    // Load showcase content
-    fetch('components/showcase.html')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('#experience .showcase').innerHTML = data;
-        });
+    // // Load showcase content
+    // fetch('components/showcase.html')
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.querySelector('#experience .showcase').innerHTML = data;
+    //     });
     
-    // Load guide content
-    fetch('components/guide.html')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('#guide .download-guide').innerHTML = data;
-        });
+    // // Load guide content
+    // fetch('components/guide.html')
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.querySelector('#guide .download-guide').innerHTML = data;
+    //     });
     
-    // Load FAQ content
-    fetch('components/faq.html')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('#faq').innerHTML = 
-                '<h2>Frequently Asked Questions</h2>' + data;
-        });
+    // // Load FAQ content
+    // fetch('components/faq.html')
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.querySelector('#faq').innerHTML = 
+    //             '<h2>Frequently Asked Questions</h2>' + data;
+    //     });
 });
 
 // Image gallery functionality
