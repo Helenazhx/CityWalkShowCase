@@ -106,16 +106,18 @@ p {
 }
 
 .hero-image {
-    flex: 1;
+    width: 600px;    /* Set your desired width */
+    height: 400px; 
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.hero-image img {
+.hero-image video {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover; /* This makes the video cover the container while maintaining aspect ratio */
+    display: block; /* Removes any potential spacing issues */
 }
 
 .cta-button {
